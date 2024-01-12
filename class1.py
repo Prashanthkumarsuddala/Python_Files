@@ -1,28 +1,15 @@
-students_marks=[98,75,68,55,42,61,53,64,32,20,88,74]
-c=len(students_marks)
-print('The numbers of students: ',c)
-b=max(students_marks)
-d=min(students_marks)
-print("The lower marks is: ",d)
-print("The highest Marks is: ",b)
-e=sum(students_marks)
-print("The total marks of students: ",e)
-f=round(e/c)
-print("The average marks: ",f)
+#Write a program to check if a year is leap year or not.
+#If a year is divisible by 4 then it is leap year but if the year is century year like 2000, 1900, 2100 then it must be divisible by 400.
+year = int(input('enter the year to check leap year or not: '))
+num = int('123456789')
+century = num*100
+if year%4 == 0:
+    print('the entered year is leap year')
+elif (century%400) == 0:
+    a= print('the entered year is leap year')
 
-for x in students_marks:
-    if x>90:
-        print("Grade A, Marks is,x")
-    elif 90>x>70:
-        print("Grade B, Marks is",x)
-    elif 70>x>50:
-        print("Grade C, Marks is",x)
-    elif 50>x>35:
-        print("Grade D, Marks is",x)
-    elif x<35:
-        print("Fail","You got ",x)
-    else:
-        print("Try Again!")
+else:
+    print('the entered year is not leap year')
 
 
 
