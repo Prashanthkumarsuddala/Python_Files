@@ -1,0 +1,90 @@
+#today friday.24-01-2025. next 5 years which day is my birthday
+def is_leap_year(year):
+    """Check if a year is a leap year."""
+    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+
+def calculate_days(years=0, months=0, days=0):
+    """Calculate total days considering leap years."""
+    total_days = 0
+    
+    # Add days for complete years
+    for year in range(1, years + 1):
+        total_days += 366 if is_leap_year(year) else 365
+    
+    # Days in each month
+    month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    
+    # Add days for complete months
+    for month in range(1, months + 1):
+        if month == 2 and is_leap_year(years):  # February in a leap year
+            total_days += 29
+        else:
+            total_days += month_days[month - 1]
+    
+    # Add remaining days
+    total_days += days
+    
+    return total_days
+
+def main():
+    print("Enter the number of years, months, and days:")
+    
+    # Input years, months, and days
+    years = int(input("Years: "))
+    months = int(input("Months: "))
+    days = int(input("Days: "))
+    
+    # Calculate total days
+    total_days = calculate_days(years, months, days)
+    
+    print(f"Total number of days: {total_days}")
+
+    b=print("The Remainder is: ",total_days%7)
+
+if __name__ == "__main__":
+    main()
+
+def get_day_of_week(start_day, days_to_add):
+    # List of days in order
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    
+    # Find the index of the starting day
+    start_index = days.index(start_day)
+    
+    # Calculate the new index
+    new_index = (start_index + days_to_add) % 7
+    
+    # Return the resulting day
+    return days[new_index]
+
+def main():
+    print("Days of the week:  Please enter the number according to today day")
+    print("1. Monday")
+    print("2. Tuesday")
+    print("3. Wednesday")
+    print("4. Thursday")
+    print("5. Friday")
+    print("6. Saturday")
+    print("7. Sunday")
+    
+    # Input starting day
+    day_number = int(input("Enter the number corresponding to the starting day (1-7): "))
+    
+    # Validate input
+    if day_number < 1 or day_number > 7:
+        print("Invalid input. Please enter a number between 1 and 7.")
+        return
+    
+    # Map the number to the corresponding day
+    start_day = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][day_number - 1]
+    
+    # Input number of days to add
+    days_to_add = int(input("Enter the number of days to add(Enter the number shown in remainder: "))
+    
+    # Calculate the resulting day
+    resulting_day = get_day_of_week(start_day, days_to_add)
+    
+    print(f"The day after adding {days_to_add} days to {start_day} is: {resulting_day}")
+
+if __name__ == "__main__":
+    main()
